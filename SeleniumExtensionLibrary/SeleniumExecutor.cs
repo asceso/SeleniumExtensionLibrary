@@ -72,6 +72,7 @@ namespace SeleniumExtensionLibrary
             options.AddArgument("--lang=en");
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-loging");
+            options.AddArgument("--disable-blink-features=AutomationControlled");
             if (extensionsPathes.Length != 0)
             {
                 foreach (var path in extensionsPathes)
