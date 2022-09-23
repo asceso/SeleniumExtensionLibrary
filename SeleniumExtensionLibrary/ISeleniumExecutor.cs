@@ -19,8 +19,9 @@ namespace SeleniumExtensionLibrary
         /// <summary>
         /// Just init driver
         /// </summary>
+        /// <param name="extensionsPathes">pathes to needed extensions</param>
         /// <returns>return inited driver</returns>
-        IWebDriver InitDriver();
+        IWebDriver InitDriver(params string[] extensionsPathes);
 
         /// <summary>
         /// Just close driver
