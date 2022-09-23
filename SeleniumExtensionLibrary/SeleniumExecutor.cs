@@ -28,7 +28,7 @@ namespace SeleniumExtensionLibrary
             return builder.ToString();
         }
 
-        public IWebDriver InitDriver()
+        public IWebDriver InitDriver(params string[] extensionsPathes)
         {
             ChromeDriverService driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -72,6 +72,13 @@ namespace SeleniumExtensionLibrary
             options.AddArgument("--lang=en");
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-loging");
+            if (extensionsPathes.Length != 0)
+            {
+                foreach (var path in extensionsPathes)
+                {
+                    options.AddExtension(path);
+                }
+            }
 
             IWebDriver driver = new ChromeDriver(driverService, options);
             driver.Manage().Window.Maximize();

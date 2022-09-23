@@ -12,6 +12,8 @@ Chromium 103.0.5060.13400</Description>
     <PackageIcon>selenium_ext.png</PackageIcon>
     <RepositoryUrl>https://github.com/asceso/SeleniumExtensionLibrary</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
