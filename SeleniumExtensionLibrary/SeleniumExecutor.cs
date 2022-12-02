@@ -28,7 +28,7 @@ namespace SeleniumExtensionLibrary
             return builder.ToString();
         }
 
-        public IWebDriver InitDriver(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences)
+        public IWebDriver InitDriver(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null)
         {
             ChromeDriverService driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -102,7 +102,7 @@ namespace SeleniumExtensionLibrary
             }
         }
 
-        public string InitDriverAndSaveToSessionManager(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences)
+        public string InitDriverAndSaveToSessionManager(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null)
         {
             IWebDriver driver = InitDriver(extensionsPathes, profilePreferences);
         GenerateId:
