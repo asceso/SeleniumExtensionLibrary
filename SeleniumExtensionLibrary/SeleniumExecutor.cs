@@ -28,7 +28,7 @@ namespace SeleniumExtensionLibrary
             return builder.ToString();
         }
 
-        public IWebDriver InitDriver(params string[] extensionsPathes)
+        public IWebDriver InitDriver(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences)
         {
             ChromeDriverService driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -78,6 +78,13 @@ namespace SeleniumExtensionLibrary
                 foreach (var path in extensionsPathes)
                 {
                     options.AddExtension(path);
+                }
+            }
+            if (profilePreferences.Length != 0)
+            {
+                foreach (var preference in profilePreferences)
+                {
+                    options.AddUserProfilePreference(preference.Item1, preference.Item2);
                 }
             }
 

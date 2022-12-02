@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace SeleniumExtensionLibrary
 {
@@ -20,8 +21,9 @@ namespace SeleniumExtensionLibrary
         /// Just init driver
         /// </summary>
         /// <param name="extensionsPathes">pathes to needed extensions</param>
+        /// <param name="profilePreferences">preferences to options</param>
         /// <returns>return inited driver</returns>
-        IWebDriver InitDriver(params string[] extensionsPathes);
+        IWebDriver InitDriver(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences);
 
         /// <summary>
         /// Just close driver
