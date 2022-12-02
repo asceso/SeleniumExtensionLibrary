@@ -73,14 +73,14 @@ namespace SeleniumExtensionLibrary
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-loging");
             options.AddArgument("--disable-blink-features=AutomationControlled");
-            if (extensionsPathes.Length != 0)
+            if (extensionsPathes != null && extensionsPathes.Length != 0)
             {
                 foreach (var path in extensionsPathes)
                 {
                     options.AddExtension(path);
                 }
             }
-            if (profilePreferences.Length != 0)
+            if (profilePreferences != null && profilePreferences.Length != 0)
             {
                 foreach (var preference in profilePreferences)
                 {
@@ -102,9 +102,9 @@ namespace SeleniumExtensionLibrary
             }
         }
 
-        public string InitDriverAndSaveToSessionManager()
+        public string InitDriverAndSaveToSessionManager(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences)
         {
-            IWebDriver driver = InitDriver();
+            IWebDriver driver = InitDriver(extensionsPathes, profilePreferences);
         GenerateId:
             string sessionId = GenerateSessionId();
             if (sessionManager.ContainsKey(sessionId))

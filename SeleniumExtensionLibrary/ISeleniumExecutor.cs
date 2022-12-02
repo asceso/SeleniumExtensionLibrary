@@ -34,8 +34,10 @@ namespace SeleniumExtensionLibrary
         /// <summary>
         /// Init driver and save it to session manager
         /// </summary>
+        /// <param name="extensionsPathes">pathes to needed extensions</param>
+        /// <param name="profilePreferences">preferences to options</param>
         /// <returns>SessionId with inited driver</returns>
-        string InitDriverAndSaveToSessionManager();
+        string InitDriverAndSaveToSessionManager(string[] extensionsPathes, params Tuple<string, object>[] profilePreferences);
 
         /// <summary>
         /// Close driver from session manager by his sessionId
