@@ -22,8 +22,9 @@ namespace SeleniumExtensionLibrary
         /// </summary>
         /// <param name="extensionsPathes">pathes to needed extensions</param>
         /// <param name="profilePreferences">preferences to options</param>
+        /// <param name="profile">directory for profile and profile name</param>
         /// <returns>return inited driver</returns>
-        IWebDriver InitDriver(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null);
+        IWebDriver InitDriver(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null, Tuple<string, string> profile = null);
 
         /// <summary>
         /// Just close driver
@@ -36,8 +37,9 @@ namespace SeleniumExtensionLibrary
         /// </summary>
         /// <param name="extensionsPathes">pathes to needed extensions</param>
         /// <param name="profilePreferences">preferences to options</param>
+        /// <param name="profile">directory for profile and profile name</param>
         /// <returns>SessionId with inited driver</returns>
-        string InitDriverAndSaveToSessionManager(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null);
+        string InitDriverAndSaveToSessionManager(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null, Tuple<string, string> profile = null);
 
         /// <summary>
         /// Close driver from session manager by his sessionId

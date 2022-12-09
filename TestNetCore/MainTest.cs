@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using SeleniumExtensionLibrary;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace TestNetCore
 {
@@ -129,6 +130,17 @@ namespace TestNetCore
             executor.CloseDriverBySessionId(sessionB);
             Assert.IsNull(executor.GetDriverBySessionId(sessionB), "Driver from session B not closed");
             TestContext.WriteLine($"Driver from session B closed. OK!{Environment.NewLine}");
+        }
+
+        [Test]
+        public void TestProfile()
+        {
+            IWebDriver driver = executor.InitDriver(profile: new Tuple<string, string>(Environment.CurrentDirectory + "/PROFILE", "AT"));
+            driver.GoToUrl("https://dropmefiles.com/N8Bna");
+            IWebElement downloadBtn = driver.FindElementOrGetNull(By.LinkText("скачать все"));
+            downloadBtn.Click();
+            Task.Delay(1000).Wait();
+            executor.CloseDriver(driver);
         }
     }
 }

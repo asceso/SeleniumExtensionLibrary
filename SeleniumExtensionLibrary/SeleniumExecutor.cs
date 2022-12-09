@@ -28,7 +28,7 @@ namespace SeleniumExtensionLibrary
             return builder.ToString();
         }
 
-        public IWebDriver InitDriver(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null)
+        public IWebDriver InitDriver(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null, Tuple<string, string> profile = null)
         {
             ChromeDriverService driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -73,6 +73,11 @@ namespace SeleniumExtensionLibrary
             options.AddArgument("--disable-notifications");
             options.AddArgument("--disable-loging");
             options.AddArgument("--disable-blink-features=AutomationControlled");
+            if (profile != null)
+            {
+                options.AddArgument($"--user-data-dir={profile.Item1}");
+                options.AddArgument($"--profile-directory={profile.Item2}");
+            }
             if (extensionsPathes != null && extensionsPathes.Length != 0)
             {
                 foreach (var path in extensionsPathes)
@@ -102,9 +107,9 @@ namespace SeleniumExtensionLibrary
             }
         }
 
-        public string InitDriverAndSaveToSessionManager(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null)
+        public string InitDriverAndSaveToSessionManager(string[] extensionsPathes = null, Tuple<string, object>[] profilePreferences = null, Tuple<string, string> profile = null)
         {
-            IWebDriver driver = InitDriver(extensionsPathes, profilePreferences);
+            IWebDriver driver = InitDriver(extensionsPathes, profilePreferences, profile);
         GenerateId:
             string sessionId = GenerateSessionId();
             if (sessionManager.ContainsKey(sessionId))
